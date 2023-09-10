@@ -17,3 +17,15 @@ h1{
     top: 50%;
     transform: translateY(-50%);
 }
+
+input{
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+}
+
+#city-input,#search-button{
+    display: block;
+    margin-bottom: 10px;
+}
+
