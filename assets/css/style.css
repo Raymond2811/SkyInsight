@@ -37,3 +37,30 @@ input{
     padding: 0 20px;
     border: none;
 }
+
+.container{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+main{
+    border: 3px black solid;
+    padding: 10px;
+    height: 500px;
+}
+
+.current{
+    border: 3px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.future{
+    border: 3px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+aside{
+    padding: 10px;
+}
