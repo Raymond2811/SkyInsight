@@ -38,6 +38,13 @@ input{
     border: none;
 }
 
+hr{
+    width: 60%; 
+    border: none;
+    border-top: 2px solid grey; 
+    margin: 10px 0; 
+}
+
 .container{
     display: grid;
     grid-template-columns: 25% 75%;
