@@ -44,6 +44,7 @@ input{
 }
 
 main{
+    margin-top: 10px;
     border: 3px black solid;
     padding: 10px;
     height: 500px;
@@ -51,14 +52,15 @@ main{
 
 .current{
     border: 3px solid black;
-    width: 100px;
-    height: 100px;
+    width: 90%;
+    height: 200px;
+    margin-bottom: 20px;
 }
 
 .future{
     border: 3px solid black;
-    width: 100px;
-    height: 100px;
+    width: 90%;
+    height: 250px;
 }
 
 aside{
