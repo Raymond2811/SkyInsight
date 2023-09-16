@@ -3,6 +3,7 @@ const present = document.querySelector('#present');
 const future = document.querySelector('#future');
 const cityInput = document.querySelector('#city-input');
 const apiKey = 'c5a8e528ef21ad697ebae69a55cf1a7e';
+const searchHistory = document.querySelector('#search-history');
 
 searchForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -63,8 +64,29 @@ searchForm.addEventListener('submit', function(e){
                 uiqueDates[date] = true;
                 }
             }
-
             future.appendChild(forecastDataContainer);
         });
+
+
+        const searchHistoryItem = document.createElement('li');
+        searchHistoryItem.textContent = cityName;
+
+        const existingCity = Array.from(searchHistory.children).find(function(item){
+            return item.textContent === cityName;
+        });
+
+        if(!existingCity) {
+            searchHistory.appendChild(searchHistoryItem);
+        }
+        searchHistory.addEventListener('click', function(e){
+            if (e.target.tagName === 'LI'){
+                const selectedCity = e.target.textContent;
+                cityInput.value = selectedCity;
+                searchForm.dispatchEvent(new Event('submit'));
+            }
+        });
+
+        cityInput.value = '';
     }
+
 });
