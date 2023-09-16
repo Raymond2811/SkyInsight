@@ -17,9 +17,9 @@ searchForm.addEventListener('submit', function(e){
             present.innerHTML =  `
             <div class='styled-text'>
                 <h2>${data.name} (Date: ${new Date(data.dt * 1000).toLocaleDateString()})<h2>
-                <p>Temp:${Math.round(data.main.temp - 273.15)* 9/5 + 32}°F </p>
+                <p>Temp: ${Math.round(data.main.temp - 273.15)* 9/5 + 32}°F </p>
                 <p>Wind speed: ${data.wind.speed} mph</p>
-                <p>Humidity: ${data.main.humidity} </p>
+                <p>Humidity: ${data.main.humidity} %</p>
             </div>
             `;
         })
@@ -43,15 +43,19 @@ searchForm.addEventListener('submit', function(e){
 
                 if (!uiqueDates[date]){
                     const forecastItem = document.createElement('div');
-                    forecastItem.className = 'styled-text';
+                    forecastItem.classList.add('forecast-data', 'styled-text');
+                    forecastItem.style.backgroundColor = 'darkblue';
+                    const forecastContainer = document.createElement('div');
+                    forecastContainer.className = 'forecast';
+                    forecastContainer.appendChild(forecastItem);
                 
                 forecastItem.innerHTML = `
                     <h2>${date}</h2>
                     <p>Temp: ${temperature}°F</p>
-                    <p>Wind spead: ${windSpeed}mph</p>
+                    <p>Wind speed: ${windSpeed}mph</p>
                     <p>Humidity: ${humidity}%</p>
                 `;
-                future.appendChild(forecastItem);
+                future.appendChild(forecastContainer);
                 uiqueDates[date] = true;
                 }
             }
