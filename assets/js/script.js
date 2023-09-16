@@ -8,6 +8,7 @@ const searchHistory = document.querySelector('#search-history');
 searchForm.addEventListener('submit', function(e){
     e.preventDefault();
     const cityName = cityInput.value;
+    const presentElement = document.getElementById('present');
     if (cityName){
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
         .then(function(response){
@@ -23,6 +24,11 @@ searchForm.addEventListener('submit', function(e){
                 <p>Humidity: ${data.main.humidity} %</p>
             </div>
             `;
+            if (data.name) {
+                presentElement.style.border = '2px solid grey';
+            } else {
+                presentElement.style.border = 'none';
+            }
         })
 
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`)
