@@ -34,6 +34,13 @@ searchForm.addEventListener('submit', function(e){
             future.innerHTML = '';
             const uiqueDates = {};
 
+            const forecastHeader = document.createElement('h2');
+            forecastHeader.textContent = '5-day forecast:';
+            future.appendChild(forecastHeader);
+
+            const forecastDataContainer = document.createElement('div');
+            forecastDataContainer.className = 'forecast-data-container';
+
             for(let i = 1; i < data.list.length; i++){
                 const item = data.list[i];
                 const date = new Date(item.dt * 1000).toLocaleDateString();
@@ -45,9 +52,7 @@ searchForm.addEventListener('submit', function(e){
                     const forecastItem = document.createElement('div');
                     forecastItem.classList.add('forecast-data', 'styled-text');
                     forecastItem.style.backgroundColor = 'darkblue';
-                    const forecastContainer = document.createElement('div');
-                    forecastContainer.className = 'forecast';
-                    forecastContainer.appendChild(forecastItem);
+                    forecastDataContainer.appendChild(forecastItem);
                 
                 forecastItem.innerHTML = `
                     <h2>${date}</h2>
@@ -55,10 +60,11 @@ searchForm.addEventListener('submit', function(e){
                     <p>Wind speed: ${windSpeed}mph</p>
                     <p>Humidity: ${humidity}%</p>
                 `;
-                future.appendChild(forecastContainer);
                 uiqueDates[date] = true;
                 }
             }
+
+            future.appendChild(forecastDataContainer);
         });
     }
 });

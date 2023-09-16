@@ -70,6 +70,18 @@ main{
     height: 250px;
 }
 
+.forecast-data-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forecast-data{
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+}
+
 aside{
     padding: 10px;
 }
@@ -80,21 +92,4 @@ aside{
 
 .styled-text p{
     font-size: 15px;
-}
-
-.forecast{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.forecast-data{
-    border-radius: 5px;
-    padding: 10px;
-    color: white;
-    
-}
-
-.forecast-data:focus {
-    outline: none;
 }
