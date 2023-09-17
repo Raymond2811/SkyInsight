@@ -90,6 +90,7 @@ searchForm.addEventListener('submit', function(e){
                 
                 forecastItem.innerHTML = `
                     <h2>${date}</h2>
+                    <i class="${weatherIcons[item.weather[0].icon]}"></i>
                     <p>Temp: ${temperature}°F</p>
                     <p>Wind speed: ${windSpeed}mph</p>
                     <p>Humidity: ${humidity}%</p>
