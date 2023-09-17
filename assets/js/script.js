@@ -4,6 +4,28 @@ const future = document.querySelector('#future');
 const cityInput = document.querySelector('#city-input');
 const apiKey = 'c5a8e528ef21ad697ebae69a55cf1a7e';
 const searchHistory = document.querySelector('#search-history');
+const weatherIcon = document.querySelector('#weather-icon');
+
+const weatherIcons = {
+    '01d': 'fas fa-sun',      // Clear sky (day)
+    '01n': 'fas fa-moon',     // Clear sky (night)
+    '02d': 'fas fa-cloud-sun', // Few clouds (day)
+    '02n': 'fas fa-cloud-moon',// Few clouds (night)
+    '03d': 'fas fa-cloud',    // Scattered clouds (day)
+    '03n': 'fas fa-cloud',    // Scattered clouds (night)
+    '04d': 'fas fa-cloud',    // Broken clouds (day)
+    '04n': 'fas fa-cloud',    // Broken clouds (night)
+    '09d': 'fas fa-cloud-showers-heavy',
+    '09n': 'fas fa-cloud-showers-heavy',
+    '10d': 'fas fa-cloud-rain',
+    '10n': 'fas fa-cloud-rain',
+    '11d': 'fas fa-bolt',
+    '11n': 'fas fa-bolt',
+    '13d': 'fas fa-snowflake',
+    '13n': 'fas fa-snowflake',
+    '50d': 'fas fa-smog',
+    '50n': 'fas fa-smog',
+};
 
 searchForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -16,9 +38,14 @@ searchForm.addEventListener('submit', function(e){
         })
         .then(function (data){
             console.log(data);
+            
+            const weatherConidtion = data.weather[0].icon;
+            const iconClass = weatherIcons[weatherConidtion];
+            const weatherIcon = iconClass ? `<i class="weather-icon ${iconClass}"></i>` : '';
+
             present.innerHTML =  `
             <div class='styled-text'>
-                <h2>${data.name} (Date: ${new Date(data.dt * 1000).toLocaleDateString()})<h2>
+                <h2>${data.name} (Date: ${new Date(data.dt * 1000).toLocaleDateString()}) ${weatherIcon}<h2>
                 <p>Temp: ${Math.round(data.main.temp - 273.15)* 9/5 + 32}°F </p>
                 <p>Wind speed: ${data.wind.speed} mph</p>
                 <p>Humidity: ${data.main.humidity} %</p>
@@ -48,7 +75,7 @@ searchForm.addEventListener('submit', function(e){
             const forecastDataContainer = document.createElement('div');
             forecastDataContainer.className = 'forecast-data-container';
 
-            for(let i = 1; i < data.list.length; i++){
+            for(let i = 2; i < data.list.length; i++){
                 const item = data.list[i];
                 const date = new Date(item.dt * 1000).toLocaleDateString();
                 const temperature = Math.round(item.main.temp - 273.15)* 9/5 + 32;
