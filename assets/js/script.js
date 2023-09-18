@@ -57,6 +57,9 @@ searchForm.addEventListener('submit', function(e){
                 presentElement.style.border = 'none';
             }
         })
+        .catch(function(error){
+            console.error('Error',error);
+        });
 
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`)
         .then(function(response){
@@ -99,8 +102,10 @@ searchForm.addEventListener('submit', function(e){
                 }
             }
             future.appendChild(forecastDataContainer);
+        })
+        .catch(function(error){
+            console.error('Error',error);
         });
-
 
         const searchHistoryItem = document.createElement('li');
         searchHistoryItem.textContent = cityName;
