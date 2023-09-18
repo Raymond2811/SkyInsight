@@ -29,7 +29,7 @@ const weatherIcons = {
 
 searchForm.addEventListener('submit', function(e){
     e.preventDefault();
-    const cityName = cityInput.value;
+    const cityName = cityInput.value.trim();
     const presentElement = document.getElementById('present');
     if (cityName){
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
@@ -45,7 +45,7 @@ searchForm.addEventListener('submit', function(e){
 
             present.innerHTML =  `
             <div class='styled-text'>
-                <h2>${data.name} (Date: ${new Date(data.dt * 1000).toLocaleDateString()}) ${weatherIcon}<h2>
+                <h2>${data.name} (Date: ${new Date(data.dt * 1000).toLocaleDateString()}) ${weatherIcon}</h2>
                 <p>Temp: ${Math.round(data.main.temp - 273.15)* 9/5 + 32}°F </p>
                 <p>Wind speed: ${data.wind.speed} mph</p>
                 <p>Humidity: ${data.main.humidity} %</p>
