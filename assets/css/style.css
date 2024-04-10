@@ -73,14 +73,16 @@ main{
 
 .forecast-data-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .forecast-data{
     border-radius: 5px;
     padding: 10px;
     color: white;
+    margin: 10px;
 }
 
 aside{
