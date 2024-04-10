@@ -37,7 +37,7 @@ input{
     color: white;
     border-radius: 4px;
     font-size: 20px;
-    padding: 0 20px;
+    padding: 10px;
     border: none;
     width: 100%;
 }
@@ -104,7 +104,31 @@ li{
     text-align: center;
     margin-left: -40px;
     font-size: 20px;
-    padding: 3px;
+    padding: 10px;
     border-radius: 5px;
 }
 
+
+@media(max-width: 500px) {
+    li{
+        font-size: 15px;
+    }
+
+    #search-button{
+        font-size: 15px;
+    }
+
+    input{
+        font-size: 13px;
+    }
+
+    aside h2{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:435px){
+    aside h2{
+        font-size: 16px;
+    }
+}
