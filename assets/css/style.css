@@ -110,16 +110,12 @@ li{
 
 
 @media(max-width: 500px) {
-    li{
-        font-size: 15px;
-    }
-
-    #search-button{
+    li, #search-button {
         font-size: 15px;
     }
 
     input{
-        font-size: 13px;
+        font-size: 11px;
     }
 
     aside h2{
